@@ -7,6 +7,7 @@
 //
 
 #import "WeatherController.h"
+#import "NetworkController.h"
 
 @implementation WeatherController
 
@@ -17,6 +18,26 @@
         sharedInstance = [WeatherController new];
     });
     return sharedInstance;
+}
+
+- (void)getWeatherWithName:(NSString *)name completion:(void (^)(WPWeather *weather))completion
+{
+    NSString *path = [NSString stringWithFormat:@"weather?q=%@", name];
+    [[NetworkController api] GET:path parameters:nil
+                         success:
+     ^(NSURLSessionDataTask *task, id responseObject)
+    {
+        NSDictionary *responseCountry = responseObject;
+        WPWeather *weatherObject = [[WPWeather alloc] initWithDictionary:responseCountry];
+        completion(weatherObject);
+    }
+                         failure:
+     ^(NSURLSessionDataTask *task, NSError *error)
+    {
+        NSLog(@"ERROR: %@", error);
+        completion(nil);
+    }
+    ];
 }
 
 @end
