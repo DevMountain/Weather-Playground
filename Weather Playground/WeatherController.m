@@ -27,6 +27,7 @@
                          success:
      ^(NSURLSessionDataTask *task, id responseObject)
     {
+        NSLog(@"getWeatherWithName: %@", responseObject);
         NSDictionary *responseCountry = responseObject;
         WPWeather *weatherObject = [[WPWeather alloc] initWithDictionary:responseCountry];
         completion(weatherObject);
@@ -34,6 +35,7 @@
                          failure:
      ^(NSURLSessionDataTask *task, NSError *error)
     {
+        NSLog(@"I'm an Error");
         NSLog(@"ERROR: %@", error);
         completion(nil);
     }
