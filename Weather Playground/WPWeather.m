@@ -37,7 +37,7 @@
     
     self.locationName = dictionary[@"name"];
     self.weatherMain = dictionary[@"weather"][0][@"main"];
-    self.weatherDescription = dictionary[@"weather"][0][@"main"];
+    self.weatherDescription = dictionary[@"weather"][0][@"description"];
     self.weatherIcon = dictionary[@"weather"][0][@"icon"];
     self.weatherTemp = dictionary[@"main"][@"temp"];
     

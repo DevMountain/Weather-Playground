@@ -9,6 +9,7 @@
 #import "WPViewController.h"
 #import "WeatherController.h"
 #import "WPWeather.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface WPViewController ()
 
@@ -52,6 +53,10 @@
          self.tempLabel.text = [NSString stringWithFormat:@"%.1fº C", [self celsiusFromKelvinString:weather.weatherTemp]];
          self.mainLabel.text = weather.weatherMain;
          self.descriptionLabel.text = weather.weatherDescription;
+         
+         NSString *iconString = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png", weather.weatherIcon];
+         NSURL *iconURL = [NSURL URLWithString:iconString];
+         [self.iconImageView setImageWithURL:iconURL];
      }];
 }
 @end
