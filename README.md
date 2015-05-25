@@ -3,6 +3,8 @@ Weather-Playground
 
 An app that uses open weather map data and provides a background for a designed weather app
 
+#### You will need to run 'pod init' and 'pod install' to run this solution branch.
+
 ###Step 1:
 - Initialize pods to get a podfile
   - ```pod init```
