@@ -14,6 +14,7 @@
 
 @implementation WPWeather
 
+//Initialize the model object with a dictionary.
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0CE44E58-7D3B-4EB2-A93E-06075801BB2A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Weather Playground</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7C5B8507104926494962B7C25AE66712F3DC1CF0</key>
+		<string>https://github.com/DevMountain/Weather-Playground.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Weather Playground.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7C5B8507104926494962B7C25AE66712F3DC1CF0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/DevMountain/Weather-Playground.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7C5B8507104926494962B7C25AE66712F3DC1CF0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7C5B8507104926494962B7C25AE66712F3DC1CF0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Weather-Playground</string>
+		</dict>
+	</array>
+</dict>
+</plist>

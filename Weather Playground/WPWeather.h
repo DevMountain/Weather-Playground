@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//create properties for the model object
 @interface WPWeather : NSObject
 
 @property (strong, nonatomic) NSString *locationName;
