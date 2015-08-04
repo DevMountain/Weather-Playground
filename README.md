@@ -4,36 +4,43 @@ Weather-Playground
 An app that uses open weather map data and provides a background for a designed weather app
 
 ###Step 1:
-- Initialize pods to get a podfile
-  - ```pod init```
-- Add AFNetworking to the podfile
-  - ```pod 'AFNetworking', '~> 2.3.1'```
-- Run pod install command
-  - ```pod install```
+- Review the documentation for the [OpenWeatherMap.org API](http://api.openweathermap.org/data/2.5/)
   
 ###Step 2:
-- Add a network controller
-  - Add a shared instance of AFHTTPSessionManager
-    - Set the base URL to http://api.openweathermap.org/data/2.5/
-    - Set the response serializer of the session manager to json
+- Open the project or start a new project
+- Configure your ViewController with a search field, a search button, and labels for the weather data you want to display
+- Add an action for the Search button
+- Create an NSURLSession and NSURLSessionDataTask that will take the text in the search field and retrieve data from the Open Weather Map API
+- Resume the NSURLSessionDataTask
+- In the completionHandler for the NSURLSessionDataTask, update your labels
+- You will need to use Grand Central Dispatch to ensure the labels are updated on the main queue
+
+```
+dispatch_async(dispatch_get_main_queue(), ^{
+  //update labels here
+}
+```
+###Black Diamond - Step 3 - Extract to Network Controller
+
+- Add a network controller object
+  - Add a getWeatherWithName: method with a completion handler
+  - ```- (void)getWeatherWithName:(NSString *)name completion:(void (^)(NSDictionary *weather))completion;```
+  - You'll need to escape the string to work with qualified URL formatting 
+  - ```stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding```
+  - The method should execute the data task, you can cut and paste over most of your code that you originally wrote in the Search Action method in the View Controller
+
+###Black Diamond - Step 4 - Model Object Serialization
 - Add an object controller
   - Use as a shared instance
 - Add a weather object
   - Properties: locationName, weatherMain, weatherDescription, weatherIcon, weatherTemp
   - Add initWithDictionary
-  
-###Step 3:
-- Add a getWeatherWithName: method with a completion handler
-  - ```- (void)getWeatherWithName:(NSString *)name completion:(void (^)(Weather *weather))completion;```
-  - The method should call GET on the [NetworkController api] then parse the response
+- In your getWeatherWithName, change the NSDictionary *weather block parameter to Weather *weather
+- Use the initWithDictionary method to turn the NSDictionary result into a Weather object
 
-###Step 4:
-- Add an interface to the viewController
-  - IBOutlet for a textField in order to populate the search
-  - IBAction to trigger the search from a button
-    - In the search method call the getWeather method
-    - You'll need to escape the string ```stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding```
-  - IBOutlets for labels to display the weather found (locationName, weatherMain, weatherDescription, weatherTemperature)
-  - IBOutlet for UIImageView to display the weather found (weatherIcon)
+###Black Diamond - Step 5 - Better User Interface
+  - Labels to display the weather found (locationName, weatherMain, weatherDescription, weatherTemperature)
+  - UIImageView to display the weather found (weatherIcon)
     - The icon uses the URL scheme: http://openweathermap.org/img/w/10d.png
+    - (Hint: NSURLSessionDownloadTask, use the block to set the image afterwards.)
 - In the completion of the search update the labels and the imageView
